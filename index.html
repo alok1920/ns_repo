@@ -12,16 +12,16 @@
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='30' r='8' fill='%23ff6b6b'/><rect x='45' y='38' width='10' height='40' rx='5' fill='%23fff'/><rect x='42' y='78' width='16' height='12' rx='8' fill='%23ddd'/></svg>" alt="NS Candles" class="logo-img">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.svg" alt="NS Candles" class="logo-img">
                     <span class="logo-text">NS Candles</span>
-                </div>
+                </a>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#bestsellers">Bestsellers</a></li>
-                    <li><a href="#candles">Shop All</a></li>
-                    <li><a href="#occasions">Occasions</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="shop.html">Shop All</a></li>
+                    <li><a href="occasions.html">Occasions</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li class="nav-cart">
                         <button class="cart-btn" id="cart-btn">
                             <i class="fas fa-shopping-bag"></i>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="hero-actions">
-                            <a href="#candles" class="cta-btn primary">Shop Collection</a>
+                            <a href="shop.html" class="cta-btn primary">Shop Collection</a>
                             <a href="#bestsellers" class="cta-btn secondary">View Bestsellers</a>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                                 <img src="images/candles/rose bouquet.png" alt="Rose Bouquet Candle">
                                 <div class="candle-info">
                                     <h3>Rose Bouquet</h3>
-                                    <p>₹2,499</p>
+                                    <p>₹249</p>
                                 </div>
                             </div>
                             <div class="featured-candle secondary">
@@ -91,7 +91,7 @@
                 <div class="container">
                     <div class="promo-content">
                         <i class="fas fa-shipping-fast"></i>
-                        <span>Free shipping on orders over ₹4,000</span>
+                        <span>Free shipping on orders over ₹999</span>
                     </div>
                     <div class="promo-content">
                         <i class="fas fa-sync-alt"></i>
@@ -129,8 +129,8 @@
                                 <span>(2.1k reviews)</span>
                             </div>
                             <p>French lavender with calming notes</p>
-                            <div class="price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Lavender Blossom" data-price="2499" data-image="images/candles/lavender blossom.png">Add to Cart</button>
+                            <div class="price">₹249</div>
+                            <button class="add-to-cart-btn" data-name="Lavender Blossom" data-price="249" data-image="images/candles/lavender blossom.png">Add to Cart</button>
                         </div>
                     </div>
                     <div class="bestseller-card">
@@ -149,8 +149,8 @@
                                 <span>(1.8k reviews)</span>
                             </div>
                             <p>Fresh rose with floral notes</p>
-                            <div class="price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Rose Bouquet" data-price="2499" data-image="images/candles/rose bouquet.png">Add to Cart</button>
+                            <div class="price">₹249</div>
+                            <button class="add-to-cart-btn" data-name="Rose Bouquet" data-price="249" data-image="images/candles/rose bouquet.png">Add to Cart</button>
                         </div>
                     </div>
                     <div class="bestseller-card">
@@ -169,379 +169,64 @@
                                 <span>(1.5k reviews)</span>
                             </div>
                             <p>Exotic orchid with mysterious notes</p>
-                            <div class="price">₹2,899</div>
-                            <button class="add-to-cart-btn" data-name="Orchid Essence" data-price="2899" data-image="images/candles/orchid essence.png">Add to Cart</button>
+                            <div class="price">₹289</div>
+                            <button class="add-to-cart-btn" data-name="Orchid Essence" data-price="289" data-image="images/candles/orchid essence.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- Candles Section -->
-        <section id="candles" class="candles-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our Premium Collection</h2>
-                    <p>Discover our exquisite range of premium scented candles</p>
-                </div>
-                
-                <!-- Filter and Sort Controls -->
-                <div class="collection-controls">
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" data-filter="all">All Candles <span class="count">(25)</span></button>
-                        <button class="filter-tab" data-filter="floral">Floral <span class="count">(12)</span></button>
-                        <button class="filter-tab" data-filter="fresh">Fresh <span class="count">(8)</span></button>
-                        <button class="filter-tab" data-filter="exotic">Exotic <span class="count">(5)</span></button>
-                    </div>
-                    <div class="sort-controls">
-                        <select id="sort-select" class="sort-dropdown">
-                            <option value="featured">Featured</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                            <option value="name">Name A-Z</option>
-                            <option value="bestselling">Best Selling</option>
-                        </select>
-                        <div class="view-toggle">
-                            <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
-                            <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="candles-grid" id="products-grid">
-                    <div class="candle-card" data-category="floral" data-price="2499" data-name="Rose Bouquet">
-                        <div class="candle-image-wrapper">
-                            <div class="candle-badge">Best Seller</div>
-                            <div class="candle-image">
-                                <img src="images/candles/rose bouquet.png" alt="Rose Bouquet Candle">
-                            </div>
-                            <div class="candle-actions">
-                                <button class="action-btn wishlist-btn" title="Add to Wishlist">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn quick-view-btn" title="Quick View" data-candle="rose-bouquet">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="candle-info">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-count">(1.8k)</span>
-                            </div>
-                            <h4>Rose Bouquet</h4>
-                            <p class="candle-description">Fresh rose with floral notes</p>
-                            <div class="candle-scent-notes">
-                                <span class="scent-tag">Rose</span>
-                                <span class="scent-tag">Floral</span>
-                            </div>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Rose Bouquet" data-price="2499" data-image="images/candles/rose bouquet.png">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/bluebell woods.png" alt="Bluebell Woods Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Bluebell Woods</h4>
-                            <p>Woodland fresh with earthy tones</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Bluebell Woods" data-price="2499" data-image="images/candles/bluebell woods.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/camellia grace.png" alt="Camellia Grace Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Camellia Grace</h4>
-                            <p>Elegant floral with graceful notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Camellia Grace" data-price="2499" data-image="images/candles/camellia grace.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/carnation classic.png" alt="Carnation Classic Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Carnation Classic</h4>
-                            <p>Classic floral with spicy undertones</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Carnation Classic" data-price="2499" data-image="images/candles/carnation classic.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/cherry blossom.png" alt="Cherry Blossom Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Cherry Blossom</h4>
-                            <p>Spring blossom with sweet notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Cherry Blossom" data-price="2499" data-image="images/candles/cherry blossom.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/dahlia radiance.png" alt="Dahlia Radiance Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Dahlia Radiance</h4>
-                            <p>Radiant floral with vibrant essence</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Dahlia Radiance" data-price="2499" data-image="images/candles/dahlia radiance.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/daisy fresh.png" alt="Daisy Fresh Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Daisy Fresh</h4>
-                            <p>Fresh meadow with clean notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Daisy Fresh" data-price="2499" data-image="images/candles/daisy fresh.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/freesia bloom.png" alt="Freesia Bloom Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Freesia Bloom</h4>
-                            <p>Delicate bloom with citrus hints</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Freesia Bloom" data-price="2499" data-image="images/candles/freesia bloom.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/gardenia bliss.png" alt="Gardenia Bliss Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Gardenia Bliss</h4>
-                            <p>Luxurious gardenia with creamy notes</p>
-                            <div class="candle-price">₹2,749</div>
-                            <button class="add-to-cart-btn" data-name="Gardenia Bliss" data-price="2749" data-image="images/candles/gardenia bliss.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/hibiscus bloom.png" alt="Hibiscus Bloom Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Hibiscus Bloom</h4>
-                            <p>Tropical hibiscus with fruity notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Hibiscus Bloom" data-price="2499" data-image="images/candles/hibiscus bloom.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/hydrangea harmony.png" alt="Hydrangea Harmony Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Hydrangea Harmony</h4>
-                            <p>Harmonious blend with soft florals</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Hydrangea Harmony" data-price="2499" data-image="images/candles/hydrangea harmony.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/jasmine dream.png" alt="Jasmine Dream Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Jasmine Dream</h4>
-                            <p>Night jasmine with dreamy essence</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Jasmine Dream" data-price="2499" data-image="images/candles/jasmine dream.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/lavender blossom.png" alt="Lavender Blossom Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Lavender Blossom</h4>
-                            <p>French lavender with calming notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Lavender Blossom" data-price="2499" data-image="images/candles/lavender blossom.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/lilac whisper.png" alt="Lilac Whisper Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Lilac Whisper</h4>
-                            <p>Gentle lilac with whisper-soft notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Lilac Whisper" data-price="2499" data-image="images/candles/lilac whisper.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/lotus serenity.png" alt="Lotus Serenity Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Lotus Serenity</h4>
-                            <p>Serene lotus with zen-like essence</p>
-                            <div class="candle-price">₹2,749</div>
-                            <button class="add-to-cart-btn" data-name="Lotus Serenity" data-price="2749" data-image="images/candles/lotus serenity.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/magnolia petals.png" alt="Magnolia Petals Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Magnolia Petals</h4>
-                            <p>Southern magnolia with petal softness</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Magnolia Petals" data-price="2499" data-image="images/candles/magnolia petals.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/marigold sunshine.png" alt="Marigold Sunshine Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Marigold Sunshine</h4>
-                            <p>Bright marigold with sunny warmth</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Marigold Sunshine" data-price="2499" data-image="images/candles/marigold sunshine.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/morning glory.png" alt="Morning Glory Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Morning Glory</h4>
-                            <p>Fresh morning with dewy notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Morning Glory" data-price="2499" data-image="images/candles/morning glory.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/orchid essence.png" alt="Orchid Essence Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Orchid Essence</h4>
-                            <p>Exotic orchid with mysterious notes</p>
-                            <div class="candle-price">₹2,899</div>
-                            <button class="add-to-cart-btn" data-name="Orchid Essence" data-price="2899" data-image="images/candles/orchid essence.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/peony charm.png" alt="Peony Charm Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Peony Charm</h4>
-                            <p>Charming peony with romantic notes</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Peony Charm" data-price="2499" data-image="images/candles/peony charm.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/poppy fields.png" alt="Poppy Fields Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Poppy Fields</h4>
-                            <p>Wild poppy with field freshness</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Poppy Fields" data-price="2499" data-image="images/candles/poppy fields.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/sunflower glow.png" alt="Sunflower Glow Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Sunflower Glow</h4>
-                            <p>Sunny citrus with warm glow</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Sunflower Glow" data-price="2499" data-image="images/candles/sunflower glow.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/tuberose delight.png" alt="Tuberose Delight Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Tuberose Delight</h4>
-                            <p>Delightful tuberose with sweet notes</p>
-                            <div class="candle-price">₹2,749</div>
-                            <button class="add-to-cart-btn" data-name="Tuberose Delight" data-price="2749" data-image="images/candles/tuberose delight.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/violet mist.png" alt="Violet Mist Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Violet Mist</h4>
-                            <p>Misty violet with ethereal essence</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Violet Mist" data-price="2499" data-image="images/candles/violet mist.png">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="candle-card">
-                        <div class="candle-image">
-                            <img src="images/candles/wildflower meadow.png" alt="Wildflower Meadow Candle">
-                        </div>
-                        <div class="candle-info">
-                            <h4>Wildflower Meadow</h4>
-                            <p>Mixed field flowers with natural charm</p>
-                            <div class="candle-price">₹2,499</div>
-                            <button class="add-to-cart-btn" data-name="Wildflower Meadow" data-price="2499" data-image="images/candles/wildflower meadow.png">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Occasions Section -->
         <section class="occasions-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Perfect for Every Occasion</h2>
-                    <p>Celebrate life's special moments with personalized candles</p>
+                    <h2>Festival Special Collection</h2>
+                    <p>Celebrate Indian festivals with our specially crafted themed candles</p>
                 </div>
                 <div class="occasions-grid">
                     <div class="occasion-card">
-                        <div class="occasion-image birthday"></div>
-                        <h3>Birthdays</h3>
-                        <p>Make their special day unforgettable with a custom photo candle</p>
+                        <div class="occasion-image">
+                            <img src="images/festival/Diwali/Saffron Radiance.jpg" alt="Diwali Candle" onerror="this.src='images/candles/rose bouquet.png'">
+                        </div>
+                        <h3>Diwali</h3>
+                        <p>Illuminate your home with specially crafted Diwali candles in gold and saffron</p>
                     </div>
                     <div class="occasion-card">
-                        <div class="occasion-image wedding"></div>
-                        <h3>Weddings</h3>
-                        <p>Commemorate your big day with elegant personalized candles</p>
+                        <div class="occasion-image">
+                            <img src="images/festival/Ganpati/Floral Ganesh.jpg" alt="Ganpati Candle" onerror="this.src='images/candles/jasmine dream.png'">
+                        </div>
+                        <h3>Ganesh Chaturthi</h3>
+                        <p>Welcome Lord Ganesha with warm-toned candles in rose, saffron, and ivory</p>
                     </div>
                     <div class="occasion-card">
-                        <div class="occasion-image memorial"></div>
-                        <h3>Memorial</h3>
-                        <p>Honor loved ones with a beautiful remembrance candle</p>
+                        <div class="occasion-image">
+                            <img src="images/festival/Holi/Color Rush.jpg" alt="Holi Candle" onerror="this.src='images/candles/sunflower glow.png'">
+                        </div>
+                        <h3>Holi</h3>
+                        <p>Celebrate the festival of colors with vibrant multicolored candles</p>
                     </div>
                     <div class="occasion-card">
-                        <div class="occasion-image holiday"></div>
-                        <h3>Holidays</h3>
-                        <p>Create lasting holiday memories with family photo candles</p>
+                        <div class="occasion-image">
+                            <img src="images/festival/Navratri/Durga Bloom.jpg" alt="Navratri Candle" onerror="this.src='images/candles/violet mist.png'">
+                        </div>
+                        <h3>Navratri</h3>
+                        <p>Dance to the rhythm of devotion with bold festive candles in violet and magenta</p>
+                    </div>
+                    <div class="occasion-card">
+                        <div class="occasion-image">
+                            <img src="images/festival/Rakshabandhan/Sacred Knot.jpg" alt="Raksha Bandhan Candle" onerror="this.src='images/candles/lilac whisper.png'">
+                        </div>
+                        <h3>Raksha Bandhan</h3>
+                        <p>Strengthen sibling bonds with soft, affectionate candles in blush pink and ivory</p>
+                    </div>
+                    <div class="occasion-card">
+                        <div class="occasion-image">
+                            <img src="images/festival/Makarsankranti/Sesame Glow.jpg" alt="Makar Sankranti Candle" onerror="this.src='images/candles/morning glory.png'">
+                        </div>
+                        <h3>Makar Sankranti</h3>
+                        <p>Welcome the harvest season with candles in mustard yellow and deep orange</p>
                     </div>
                 </div>
             </div>
@@ -601,55 +286,6 @@
         </section>
     </main>
 
-    <!-- Quick View Modal -->
-    <div id="quick-view-modal" class="modal">
-        <div class="modal-content quick-view-content">
-            <div class="modal-header">
-                <h2 id="quick-view-title">Product Quick View</h2>
-                <button class="close-btn" id="close-quick-view">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="quick-view-grid">
-                    <div class="quick-view-image">
-                        <img id="quick-view-img" src="" alt="">
-                    </div>
-                    <div class="quick-view-details">
-                        <div class="rating" id="quick-view-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="rating-count">(2.1k reviews)</span>
-                        </div>
-                        <h3 id="quick-view-name">Product Name</h3>
-                        <p id="quick-view-description">Product description</p>
-                        <div class="scent-notes">
-                            <h4>Scent Notes:</h4>
-                            <div id="quick-view-notes"></div>
-                        </div>
-                        <div class="burn-time">
-                            <i class="fas fa-clock"></i>
-                            <span>50-60 hours burn time</span>
-                        </div>
-                        <div class="price-section">
-                            <div class="price" id="quick-view-price">₹2,499</div>
-                        </div>
-                        <div class="quick-actions">
-                            <button class="add-to-cart-btn primary" id="quick-add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="wishlist-btn secondary">
-                                <i class="far fa-heart"></i>
-                                Add to Wishlist
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Cart Modal -->
     <div id="cart-modal" class="modal">
@@ -667,11 +303,11 @@
                     </div>
                     <div class="total-row">
                         <span>Shipping:</span>
-                        <span>₹499</span>
+                        <span>₹<span id="cart-shipping">149</span></span>
                     </div>
                     <div class="total-row final-total">
                         <span>Total:</span>
-                        <span>₹<span id="cart-total">499</span></span>
+                        <span>₹<span id="cart-total">149</span></span>
                     </div>
                 </div>
             </div>

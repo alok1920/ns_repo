@@ -1,56 +1,92 @@
 class CandleCustomizer {
     constructor() {
-        this.cart = [];
+        this.cart = this.loadCartFromStorage();
+        this.currentPage = this.detectCurrentPage();
         this.init();
+        this.updateCartCount(); // Update cart count on page load
+    }
+
+    detectCurrentPage() {
+        const path = window.location.pathname;
+        if (path.includes('shop.html')) {
+            return 'shop';
+        } else {
+            return 'home';
+        }
     }
 
     init() {
         this.bindEventListeners();
-        this.setupSmoothScrolling();
+        if (this.currentPage === 'home') {
+            this.setupSmoothScrolling();
+        }
+    }
+
+    loadCartFromStorage() {
+        try {
+            const savedCart = localStorage.getItem('nsCandles_cart');
+            return savedCart ? JSON.parse(savedCart) : [];
+        } catch (error) {
+            console.error('Error loading cart from localStorage:', error);
+            return [];
+        }
+    }
+
+    saveCartToStorage() {
+        try {
+            localStorage.setItem('nsCandles_cart', JSON.stringify(this.cart));
+        } catch (error) {
+            console.error('Error saving cart to localStorage:', error);
+        }
     }
 
     bindEventListeners() {
-        // Add to cart buttons for candle cards
+        // Add to cart buttons for candle cards (available on both pages)
         document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
             btn.addEventListener('click', (e) => this.addCandleToCart(e));
         });
 
-        // Filter tabs
-        document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', (e) => this.filterProducts(e));
-        });
+        // Shop page specific functionality
+        if (this.currentPage === 'shop') {
+            // Filter tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => this.filterProducts(e));
+            });
 
-        // Sort dropdown
-        const sortSelect = document.getElementById('sort-select');
-        if (sortSelect) {
-            sortSelect.addEventListener('change', (e) => this.sortProducts(e.target.value));
+            // Sort dropdown
+            const sortSelect = document.getElementById('sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', (e) => this.sortProducts(e.target.value));
+            }
+
+            // View toggle
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => this.toggleView(e));
+            });
+
+            // Quick view buttons
+            document.querySelectorAll('.quick-view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => this.showQuickView(e));
+            });
+
+            // Quick view modal close
+            const closeQuickView = document.getElementById('close-quick-view');
+            if (closeQuickView) closeQuickView.addEventListener('click', () => this.hideQuickView());
         }
 
-        // View toggle
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.toggleView(e));
-        });
-
-        // Quick view buttons
-        document.querySelectorAll('.quick-view-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.showQuickView(e));
-        });
-
-        // Wishlist buttons
+        // Wishlist buttons (available on both pages)
         document.querySelectorAll('.wishlist-btn').forEach(btn => {
             btn.addEventListener('click', (e) => this.toggleWishlist(e));
         });
 
-        // Cart functionality
+        // Cart functionality (available on both pages)
         const cartBtn = document.getElementById('cart-btn');
         const closeCart = document.getElementById('close-cart');
         const continueShopping = document.getElementById('continue-shopping');
-        const closeQuickView = document.getElementById('close-quick-view');
 
         if (cartBtn) cartBtn.addEventListener('click', () => this.showCart());
         if (closeCart) closeCart.addEventListener('click', () => this.hideCart());
         if (continueShopping) continueShopping.addEventListener('click', () => this.hideCart());
-        if (closeQuickView) closeQuickView.addEventListener('click', () => this.hideQuickView());
 
         // Modal close on outside click
         const modal = document.getElementById('cart-modal');
@@ -58,6 +94,16 @@ class CandleCustomizer {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) this.hideCart();
             });
+        }
+
+        // Quick view modal close on outside click (shop page only)
+        if (this.currentPage === 'shop') {
+            const quickViewModal = document.getElementById('quick-view-modal');
+            if (quickViewModal) {
+                quickViewModal.addEventListener('click', (e) => {
+                    if (e.target === quickViewModal) this.hideQuickView();
+                });
+            }
         }
 
         // Checkout button
@@ -82,6 +128,7 @@ class CandleCustomizer {
         };
 
         this.cart.push(candleItem);
+        this.saveCartToStorage();
         this.updateCartCount();
         this.showAddToCartAnimation(button);
     }
@@ -181,7 +228,7 @@ class CandleCustomizer {
         const candleData = {
             'rose-bouquet': {
                 name: 'Rose Bouquet',
-                price: '2,499',
+                price: '249',
                 image: 'images/candles/rose bouquet.png',
                 description: 'A beautiful blend of fresh roses with subtle floral undertones. Perfect for creating a romantic and elegant atmosphere.',
                 notes: ['Rose', 'Floral', 'Fresh']
@@ -208,7 +255,7 @@ class CandleCustomizer {
                 currentTarget: {
                     dataset: {
                         name: data.name,
-                        price: data.price,
+                        price: data.price.replace(',', ''),
                         image: data.image
                     }
                 }
@@ -320,19 +367,22 @@ class CandleCustomizer {
 
     removeFromCart(itemId) {
         this.cart = this.cart.filter(item => item.id !== itemId);
+        this.saveCartToStorage();
         this.updateCartCount();
         this.showCart(); // Refresh cart display
     }
 
     updateCartTotals() {
         const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const shipping = subtotal > 0 ? 499 : 0;
+        const shipping = subtotal >= 999 ? 0 : (subtotal > 0 ? 149 : 0);
         const total = subtotal + shipping;
 
         const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartShipping = document.getElementById('cart-shipping');
         const cartTotal = document.getElementById('cart-total');
 
         if (cartSubtotal) cartSubtotal.textContent = subtotal.toLocaleString('en-IN');
+        if (cartShipping) cartShipping.textContent = shipping.toLocaleString('en-IN');
         if (cartTotal) cartTotal.textContent = total.toLocaleString('en-IN');
     }
 
@@ -349,12 +399,15 @@ class CandleCustomizer {
         }
 
         // Simulate checkout process
-        const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 499;
+        const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = subtotal >= 999 ? 0 : 149;
+        const total = subtotal + shipping;
         
         alert(`Thank you for your order! 🕯️\n\nOrder Total: ₹${total.toLocaleString('en-IN')}\n\nYour premium candles will be carefully packaged and shipped within 3-5 business days.\n\n(This is a demo - no actual purchase has been made)`);
         
         // Clear cart
         this.cart = [];
+        this.saveCartToStorage();
         this.updateCartCount();
         this.hideCart();
     }
